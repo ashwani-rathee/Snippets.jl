@@ -1,5 +1,0 @@
-```julia
-using Images,ImagesCore
-
-
-```
