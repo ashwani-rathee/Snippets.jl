@@ -13,8 +13,8 @@
 }
 
 html {
-    /* margin-left: 15%;
-    margin-right: 15%; */
+    margin-left: 15%;
+    margin-right: 15%;
     line-height: 1.15;
     -webkit-text-size-adjust: 100%
 }
@@ -23,7 +23,8 @@ body {
     margin-top: 30px;
     margin-left: 10%;
     margin-right: 10%;
-    margin: 100
+    margin: 100;
+    color: #d6b7d29e;
 }
 
 main {
@@ -667,7 +668,7 @@ body {
     font-display: auto;
     font-size: 1rem;
     line-height: 1.54;
-    background-color: #fff;
+    background-color: #d6b7d29e;
     color: #222;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -799,7 +800,7 @@ code {
     font-family: JuliaMono, Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace;
     font-display: auto;
     font-feature-settings: normal;
-    background: #eaeaea;
+    color: #eaeaea;
     /*padding:1px 6px;*/
     padding: 1px 3px;
     margin: 0 2px;
@@ -1438,6 +1439,10 @@ case {
     display: none;
 }
 
+ul {
+    list-style-type: none;
+}
+
 pre {
     white-space: pre;
     margin-top: -2.00em;
@@ -1446,7 +1451,7 @@ pre {
 }
 
 button {
-    height: 50px;
+    /* height: 50px; */
     width: 100%;
     /* border-radius: 100%; */
     /* background-color: red; */
@@ -1456,6 +1461,7 @@ button {
     font-size: 1.5em;
     text-align: left;
     vertical-align: middle;
+    background-color: black;
     /* color: white;
     line-height: 100px; */
     /*or you could use 4em*/
