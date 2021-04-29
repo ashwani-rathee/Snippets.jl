@@ -9,6 +9,8 @@
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <link rel="stylesheet" href="./styles/github-gist.css">
     <script src="highlight.pack.js"></script>
+    <script src="questioncontroller.js"></script>
+    <script src="answerslist.js"></script>
     <script>
         hljs.highlightAll();
     </script>
@@ -16,10 +18,16 @@
 
 
 <body>
-    <button onclick="myFunction()" class="code"><code class="plaintext ">1) How to write a "Hello World!! " program in Julia?</code></button>
 
-    <pre id="myDIV">
-    <code class="julia hljs ">
+    <ul id="ul-list">
+        <!-- <li><button onclick="myFunction()" class="code" id="ques-3"><code class="plaintext ">1) How to write a "Hello World!! " program in Julia?</code></button>
+        </li>
+        <li><button onclick="myFunction()" class="code" id="ques-4"><code class="plaintext ">2) How to write a "Hello World!! " program in Julia?</code></button> s </li> -->
+    </ul>
+
+    <!-- 
+    <pre id="ans-1">
+    <code class="julia hljs " id>
           <span class="hljs-keyword ">function </span><span class="hljs-title ">main</span>(<span class="hljs-params ">who</span><span class="hljs-built_in ">::</span><span class="hljs-type ">Union{String,Nothing}</span> <span class="hljs-keyword
         ">=</span> <span class="hljs-literal ">nothing</span>)
                 <span class="hljs-keyword ">if</span> who <span class="hljs-built_in ">===</span> <span class="hljs-literal ">nothing</span>
@@ -27,33 +35,105 @@
                 <span class="hljs-keyword ">end</span>
                 <span class="hljs-built_in ">print</span>(<span class="hljs-literal ">stdout</span>, <span class="hljs-string ">"hello, <span class="hljs-subst">$(who)</span>!\n"</span>)
                 <span class="hljs-keyword">return</span> <span class="hljs-literal">nothing</span>
-          <span class="hljs-keyword">end</span>
-      </code>
-    </pre>
-    <div> <button onclick="myFunction()" class="code"><code class="plaintext ">1) How to write a "Hello World!! " program in Julia?</code></button>
-    </div>
-    <pre id="myDIV">
-        <code class="julia hljs">
-          <span class="hljs-keyword">function </span><span class="hljs-title">main</span>(<span class="hljs-params">who</span><span class="hljs-built_in">::</span><span class="hljs-type">Union{String,Nothing}</span> <span class="hljs-keyword">=</span> <span class="hljs-literal">nothing</span>)
-                <span class="hljs-keyword">if</span> who <span class="hljs-built_in">===</span> <span class="hljs-literal">nothing</span>
-                    who <span class="hljs-keyword">=</span> <span class="hljs-string">"world"</span>
-                <span class="hljs-keyword">end</span>
-                <span class="hljs-built_in">print</span>(<span class="hljs-literal">stdout</span>, <span class="hljs-string">"hello, <span class="hljs-subst">$(who)</span>!\n"</span>)
-                <span class="hljs-keyword">return</span> <span class="hljs-literal">nothing</span>
-          <span class="hljs-keyword">end</span>
-      </code>
-    </pre>
-    <script>
-        function myFunction() {
-            var x = document.getElementById("myDIV");
-            if (x.style.display === "none") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
-        }
-    </script>
+          <span class="hque="myFunction()" class="code" id="ques-2"><code class="plaintext ">1) How to write a "Hello World!! " program in Julia?</code></button>
+    </div> -->
+    <!-- <script>
+        makelist();
+    </script> -->
 
+    <script>
+        var makelist = (() => {
+
+            var previousidentitycard = 0;
+
+            let answerlist = [
+                `
+            function name() {
+                if( hello == true)
+                    println("Hello buddy")
+            }
+            `,
+                `
+            function name() {
+                if( hello == true)
+                    println("Hello buddy")
+            }
+            `, `
+            function name() {
+                if( hello == true)
+                    println("Hello buddy")
+            }
+            `
+            ];
+
+            let queslist = [
+                `Write a Hello World!! Program`,
+                `Write a not so Hello world!! Program`, `Write a not so Hello world!! Program`
+            ];
+
+
+            toggleview = async(id) => {
+                console.log("Inside toogleview", id)
+                await this.toggleresponse(id);
+
+            };
+
+            toggleresponse = (id) => {
+                var z = document.getElementById(`ans-${previousidentitycard}`);
+                z.style.display === "none"
+                    // if (z.style.display === "none") {
+                    //     z.style.display = "block";
+                    // } else if (z.style.display === "block") {
+                    //     z.style.display = "none";
+                    // }
+                console.log("Previous:", previousidentitycard)
+                previousidentitycard = id;
+                console.log("Updated:", previousidentitycard)
+                console.log("Inside toogleresponse:", id);
+                var x = document.getElementById(`ans-${id}`);
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                } else {
+                    x.style.display = "none";
+                }
+
+                // for (i = 0; i < queslist.length; i++) {
+                //     var x = document.getElementById(`ans-${i}`);
+                //     if (i == id) {
+                //         x.style.display = "block";
+                //     } else {
+                //         x.style.display = "none";
+                //     }
+                // }
+            }
+            questionlistcreator = () => {
+                for (i = 0; i < queslist.length; i++) {
+                    var question = document.createElement('li');
+                    question.innerHTML = `
+                <button onclick="toggleview(${i})" class="code" id="ques-${i}">
+                    <code class="plaintext ">${queslist[i]}
+                        </code>
+                </button>
+                <pre id="ans-${i}">
+                        <code class="julia hljs">
+                            ${answerlist[i]}
+                        </code>
+                </pre>`;
+                    document.getElementById('ul-list').appendChild(question);
+                }
+                // queslist.forEach(function(question, i) {
+                //     var answer = document.createElement('pre')
+                // });
+            }
+
+            return {
+                init: function() {
+                    questionlistcreator();
+                }
+            };
+        })();
+        makelist.init();
+    </script>
 </body>
 
 </html>

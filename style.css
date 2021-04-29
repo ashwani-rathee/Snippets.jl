@@ -1442,7 +1442,7 @@ pre {
     white-space: pre;
     margin-top: -2.00em;
     margin-bottom: -2.00em;
-    display: block;
+    display: none;
 }
 
 button {
