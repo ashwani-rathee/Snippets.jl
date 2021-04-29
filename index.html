@@ -40,16 +40,33 @@
                     println("Hello buddy")
             }
             `, `
-            function name() {
+            function linearsearrch() {
                 if( hello == true)
                     println("Hello buddy")
             }
+            `,
+                `
+function missingnum(array::AbstractArray, n::Tuple{Int64})
+    # println(array, n);
+    total = ( n[1] + 1) * ( n[1] + 2) / 2; # 
+    for i in 1:n[1]
+        total = total - array[i];
+    end
+    return total;
+end
+
+arr = [8, 7, 6, 5, 4, 3, 1] # 2 is missing
+n = size(arr) # returns dimension wise size tuple  
+
+missingnum(arr, n) # main function
             `
             ];
 
             let queslist = [
                 `Write a Hello World!! Program`,
-                `Write a not so Hello world!! Program`, `Write a not so Hello world!! Program`
+                `Write a not so Hello world!! Program`,
+                `Write a program to do linear search?`,
+                `Find the Missing number in a array`
             ];
 
 
@@ -61,12 +78,12 @@
 
             toggleresponse = (id) => {
                 var z = document.getElementById(`ans-${previousidentitycard}`);
-                z.style.display === "none"
-                    // if (z.style.display === "none") {
-                    //     z.style.display = "block";
-                    // } else if (z.style.display === "block") {
-                    //     z.style.display = "none";
-                    // }
+                z.style.display === "none";
+                // if (z.style.display === "none") {
+                //     z.style.display = "block";
+                // } else if (z.style.display === "block") {
+                //     z.style.display = "none";
+                // }
                 console.log("Previous:", previousidentitycard)
                 previousidentitycard = id;
                 console.log("Updated:", previousidentitycard)
