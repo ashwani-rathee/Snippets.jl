@@ -221,6 +221,41 @@ n = size(arr)[1];
 
 # Function call
 jump_search(arr, x, jump)
+`,
+                `
+begin
+"""
+	 interpolation_search(arr::AbstractArray{T,1}, l::T, r::T, x::T) where {T <: Real}
+	
+Interpolation Search in 1-D array
+Time Complexity: O(log2(log2 n))
+
+"""
+function interpolation_search(arr::AbstractArray{T,1}, l::T, r::T, x::T) where {T <: Real}
+	n = size(arr)[1]
+	if(r>=l && x >= arr[l] && x <= arr[r])
+		mid = Int(ceil(l + (((x- arr[l]) * (r-l)) / (arr[r] - arr[l]))))
+		if(arr[mid] == x)
+			return "Element present at index $mid"
+		elseif(arr[mid] > x)
+			interpolation_search(arr, l, mid-1, x)
+		else
+			interpolation_search(arr, mid+1, r, x)
+		end
+	else 
+		return "Element not present in array"
+	end
+end
+
+# Arguments
+arr = [1, 2, 3, 4, 13, 15, 20];
+x = 15;
+n = size(arr)[1]
+l = 1;
+r = n;
+
+# Function call
+interpolation_search(arr, l, r, x)
 `
             ];
 
@@ -232,7 +267,8 @@ jump_search(arr, x, jump)
                 `How to do linear search in O(n) time?`,
                 `How to do linear search in improved time?`,
                 `How to do binary search in O(Log n) time?`,
-                `How to do jump search in O(√ n) time?`
+                `How to do jump search in O(√ n) time?`,
+                `How to do interpolation search in O(log2(log2 n)) time?`
             ];
 
 
