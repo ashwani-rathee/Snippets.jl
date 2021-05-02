@@ -3,6 +3,11 @@
 
 <head>
     <meta charset="utf-8">
+    <title> Julia Programs</title>
+    <meta property="og:title" content="Julia programs, julia">
+    <meta name="keywords" content="Ashwani, Rathee, AshwaniRathee, machine, learning,julia, JuliaLang, julia programs, julia bloggers, julia math, sorting,music,audio,signal,processing,sentiment,analysis,software, engineering, automation, web, development, deep, learning, uiet, panjab, university, engineer">
+    <meta name="author" content="Ashwani Rathee">
+    <meta name="description" content="Programs written in Julia Programming language" />
     <!-- <title>Animated Drop-down Menu CSS3</title> -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
@@ -59,14 +64,104 @@ arr = [8, 7, 6, 5, 4, 3, 1] # 2 is missing
 n = size(arr) # returns dimension wise size tuple  
 
 missingnum(arr, n) # main function
-            `
+            `,
+                `
+# Julia code to linearly search in arr[].
+# If x is present in arr[], then linear_search returns its index,
+# else returns -1
+
+"""
+	linear_search(arr:: AbstractArray{T,1}, x::T, n::T) where { T <: Real}
+    
+Linear search in 1-D array
+"""
+function linear_search(arr:: AbstractArray{T,1}, x::T, n::T) where { T <: Real}
+	for i in 1:n
+		if (arr[i] == x)
+			return i
+		end
+	end
+	return -1
+end
+
+# Arguments
+arr = [2, 3, 4, 10, 40]
+x = 10
+n = size(arr)[1]
+
+# Function call
+result = linear_search(arr, x, n)
+if (result == -1) 
+	println("Element is not present in array")
+else
+	println("Element present at index: ", result)
+end
+
+# This code is contributed by  Ashwani Rathee 
+`,
+                `
+# Julia code to linearly search in arr[].
+# If x is present in arr[], then linear_search returns its index,
+# else returns -1
+
+"""
+	linear_search(arr:: AbstractArray{T,1}, x::T) where { T <: Real}
+    
+Linear search in 1-D array
+"""
+function linear_search(arr:: AbstractArray{T,1}, search_element:: T) where { T <: Real}
+	left = 1
+	length = size(arr)[1]
+	position = 0
+	right = length
+		
+    # Run loop from 0 to right
+    for left in 1:right
+ 
+        # If search_element is found with
+        # left variable
+        if (arr[left] == search_element)
+            position = left
+            println("Element found in Array at ", position
+                  , " Position with ", left, " Attempt")
+            break
+		end
+			
+        # If search_element is found with
+        # right variable
+        if (arr[right] == search_element)
+            position = right
+            println("Element found in Array at ", position,
+                  " Position with ", length - right + 1, " Attempt")
+            break
+		end
+        left += 1
+        right -= 1
+	end
+	    # If element not found
+    if (position == 0)
+        println("Not found in Array with ", left, " Attempt")
+	end
+end
+
+# Arguments
+arr = [1, 2, 3, 4, 5]
+search_element = 5
+	
+# Function call
+linear_search(arr, search_element)
+
+# This code is contributed by  Ashwani Rathee 
+`
             ];
 
             let queslist = [
                 `Write a Hello World!! Program`,
                 `Write a not so Hello world!! Program`,
                 `Write a program to do linear search?`,
-                `Find the Missing number in a array`
+                `Find the Missing number in a array`,
+                `How to do linear search in O(n) time?`,
+                'How to do linear search in improved time?'
             ];
 
 
