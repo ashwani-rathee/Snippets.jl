@@ -152,6 +152,40 @@ search_element = 5
 linear_search(arr, search_element)
 
 # This code is contributed by  Ashwani Rathee 
+`,
+                `
+""" 
+	binary_search(arr::AbstractArray{T,1}, l::T, r::T, x::T) where T <: Real
+	
+Binary Search in 1-D array
+"""
+function binary_search(arr::AbstractArray{T,1}, l::T, r::T, x::T) where T <: Real
+	println("start")
+	n = size(arr)[1]
+	if(r>=l)
+		mid = Int(ceil(l+(r-l)/2));
+		println(mid)
+		if(arr[mid] == x)
+			return "Element present at index $mid"
+		elseif(arr[mid] > x)
+			binary_search(arr, l, mid-1, x)
+		else
+			binary_search(arr, mid+1, r, x)
+		end
+	else 
+		return "Element not present in array"
+	end
+end
+
+# Arguments
+arr = [1, 2, 3, 4];
+x = 4;
+n = size(arr)[1];
+l = 1;
+r = n;
+
+# Function call
+binary_search(arr, l, r, x)
 `
             ];
 
@@ -161,7 +195,8 @@ linear_search(arr, search_element)
                 `Write a program to do linear search?`,
                 `Find the Missing number in a array`,
                 `How to do linear search in O(n) time?`,
-                'How to do linear search in improved time?'
+                `How to do linear search in improved time?`,
+                `How to do binary search in O(Log n) time?`
             ];
 
 
