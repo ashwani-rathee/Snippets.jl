@@ -23,7 +23,7 @@
 
 
 <body>
-
+    <h1>Algorithms written in Julia </h1>
     <ul id="ul-list">
 
     </ul>
@@ -186,6 +186,41 @@ r = n;
 
 # Function call
 binary_search(arr, l, r, x)
+`,
+                `
+"""
+	jump_search(arr::AbstractArray{T,1}, x::T, jump::T = Int(ceil(sqrt(n)))) where {T <: Real}
+
+Jump Search in 1-D array
+Time Complexity :  O(√ n)
+Time complexity of Jump Search is between Linear Search ( ( O(n) ) and Binary Search ( O (Log n) )
+"""
+function jump_search(arr::AbstractArray{T,1}, x::T, jump::T = Int(ceil(sqrt(n)))) where {T <: Real}
+	start = 1 
+	final = jump
+	while( arr[final] <= x && final < n)
+		start = final
+		final = final + jump
+		if( final > n -1)
+        final = n		
+		end		
+	end
+	for i in start:final
+		if(arr[i] == x)
+			return i
+		end
+	end	
+	return -1
+end
+
+# Arguments
+arr = [1, 2, 3, 31, 4, 13];
+x = 31;
+jump = 2; # optimum is sqroot(n)
+n = size(arr)[1];
+
+# Function call
+jump_search(arr, x, jump)
 `
             ];
 
@@ -196,7 +231,8 @@ binary_search(arr, l, r, x)
                 `Find the Missing number in a array`,
                 `How to do linear search in O(n) time?`,
                 `How to do linear search in improved time?`,
-                `How to do binary search in O(Log n) time?`
+                `How to do binary search in O(Log n) time?`,
+                `How to do jump search in O(√ n) time?`
             ];
 
 
