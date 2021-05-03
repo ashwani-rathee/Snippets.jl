@@ -338,6 +338,65 @@ arr = [5, 3, 2, 3, 1 , 4, 4, 1]
 
 # Function call
 selection_sort(arr)
+`,
+                `
+"""
+	bubble_sort(arr::AbstractArray{T,1}) where { T <: Real }
+
+Bubble sort in  1-d array
+Time Complexity O(n^2)
+"""
+function bubble_sort(arr::AbstractArray{T,1}) where { T <: Real }
+	end_flag = false
+	n = size(arr)[1]
+	while(end_flag == false)
+		end_flag = true
+		val = 1
+		for i in 2: n - val
+			if(arr[i-1] > arr[i])
+				temp = arr[i-1]
+				arr[i-1] = arr[i]
+				arr[i] = temp
+			    end_flag = false
+			end
+			val = val + 1;
+		end
+	end
+	return arr
+end
+
+# Arguments
+arr = [1, 3, 6, 2, 4, 5, 7, 12 , 8, 51]
+
+# Function call
+bubble_sort(arr)
+`,
+                `
+"""
+	insertion_sort(arr::AbstractArray{T,1}) where {T <: Real}
+
+Insertion sort in 1-d array
+Time Complexity: O(n^2) 
+"""
+function insertion_sort(arr::AbstractArray{T,1}) where {T <: Real}
+	n = size(arr)[1]
+	for i in 1:n
+        key = arr[i]
+        j = i-1
+        while j >= 1 && key < arr[j]
+                arr[j + 1] = arr[j]
+                j -= 1
+		end
+        arr[j + 1] = key		
+	end	
+	return arr
+end
+
+# Arguments
+arr = [1, 3, 6, 2, 4, 5, 7, 12 , 8, 51]
+
+# Function call
+insertion_sort(arr)
 `
             ];
 
@@ -352,7 +411,9 @@ selection_sort(arr)
                 `How to do jump search in O(√ n) time?`,
                 `How to do interpolation search in O(log2(log2 n)) time?`,
                 `How to do exponential search in O(Log n) time?`,
-                `How to do selection sort in O(n^2) time?`
+                `How to do selection sort in O(n^2) time?`,
+                `How to do bubble sort in O(n^2) time?`,
+                `How to do insertion sort in O(n^2) time?`
             ];
 
 
