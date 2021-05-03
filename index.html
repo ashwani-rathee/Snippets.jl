@@ -309,6 +309,35 @@ r = n;
 # Function call
 exponential_search(arr, x)
 
+`,
+                `
+"""
+	 selection_sort(arr::AbstractArray{T,1}) where {T <: Real}
+
+Selection sort in 1-d array
+Time Complexity: O(n^2)
+"""
+function selection_sort(arr::AbstractArray{T,1}) where {T <: Real}
+	n= size(arr)[1]
+	for i in 1:n
+		min_index = i
+		for j in i:n
+			if(arr[j] < arr[min_index])
+				min_index = j
+			end
+		end
+		temp = arr[i]
+		arr[i] = arr[min_index]
+		arr[min_index] = temp
+	end
+	return arr
+end
+
+# Arguments
+arr = [5, 3, 2, 3, 1 , 4, 4, 1]
+
+# Function call
+selection_sort(arr)
 `
             ];
 
@@ -322,7 +351,8 @@ exponential_search(arr, x)
                 `How to do binary search in O(Log n) time?`,
                 `How to do jump search in O(√ n) time?`,
                 `How to do interpolation search in O(log2(log2 n)) time?`,
-                `How to do exponential search in O(Log n) time?`
+                `How to do exponential search in O(Log n) time?`,
+                `How to do selection sort in O(n^2) time?`
             ];
 
 
