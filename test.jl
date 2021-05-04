@@ -1,23 +1,15 @@
 # 
-
-"""
-
-
-"""
-function merge_sort(arr::AbstractArray{T,1}, l::T, r::T) where {T <: Real}
-    if r > l 
-        mid = Int(ceil(l + (r-l)/2))
-        println(mid)
-        merge_sort(arr, l, mid)
-        merge_sort(arr, mid, r)
+function venus_symbol()
+    n=5
+    for i in 1:n
+        for j in 1:n
+            if( i ^ 2 + j ^ 2 == n ^ 2 ./ 4)
+                println("x")
+            end
+        end
+        println("\n")
     end
-    return "Hello"
+
 end
 
-# Arguments
-arr = [5 ,3, 1, 4, 2]
-n = size(arr)[1]
-l = 0
-r = n
-# Function call
-merge_sort(arr, l, r)
+venus_symbol()
