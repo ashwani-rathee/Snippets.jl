@@ -4,6 +4,8 @@ using Documenter
 
 makedocs(sitename="Documentation",
         pages=[
-            "Home" => "index.md"
-           ])
+            "Home" => "index.md"],
+            format = Documenter.HTML(
+                prettyurls = get(ENV, "CI", nothing) == "true"
+            ))
 deploydocs(repo = "github.com/ashwani-rathee/Snippets.jl")
