@@ -1,5 +1,6 @@
 module Snippets
 
+export greet,MyFunction
 greet() = print("Hello World!")
 
 # Example of function inside ./src/VegaGraphs.jl
