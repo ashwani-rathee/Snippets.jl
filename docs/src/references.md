@@ -7,8 +7,8 @@ Depth = 3
 ## Methods  
 
 ```@docs
-draw
+<!-- draw
 draw!
 bresenham
-xiaolin_wu
+xiaolin_wu -->
 ```
