@@ -1,7 +1,9 @@
-using Documenter,ImageDraw
-# Inside make.jl
 push!(LOAD_PATH,"../src/")
+using Documenter
+# Inside make.jl
 
 makedocs(sitename="Documentation",
-            format = Documenter.HTML(prettyurls = get(ENV, "CI", nothing) == "true"))
+        pages=[
+            "Home" => "index.md"
+           ])
 deploydocs(repo = "github.com/ashwani-rathee/Snippets.jl")
